@@ -42,7 +42,8 @@ const Page = ({ page, preview }) => {
     <div>
       {preview && (
         <h3>
-          Warning: you are in preview mode. <a href="/api/exit-preview">Exit</a>
+          Warning: you are in preview mode.{" "}
+          <Link href="/api/exit-preview">Exit</Link>
         </h3>
       )}
       <Link href="/">Home</Link>
