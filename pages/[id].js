@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 const pages = {
@@ -18,6 +19,7 @@ const Page = ({ page }) => {
 
   return (
     <div>
+      <Link href="/">Home</Link>
       <h1>{page.title}</h1>
     </div>
   );

@@ -6,13 +6,13 @@ export default function Home() {
       <h1>Hello Next.js</h1>
       <ul>
         <li>
-          <Link href="page-1">Page 1</Link>
+          <Link href="1">Page 1</Link>
         </li>
         <li>
-          <Link href="page-2">Page 1</Link>
+          <Link href="2">Page 1</Link>
         </li>
         <li>
-          <Link href="page-3">Page 3</Link>
+          <Link href="3">Page 3</Link>
         </li>
       </ul>
     </div>
