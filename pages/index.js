@@ -14,6 +14,9 @@ export default function Home() {
         <li>
           <Link href="3">Page 3</Link>
         </li>
+        <li>
+          <Link href="4">Page 4 (doesnt exist)</Link>
+        </li>
       </ul>
     </div>
   );

@@ -8,7 +8,18 @@ const pages = {
   2: {
     title: "this is page 2",
   },
+  3: {
+    title: "this is page 3",
+  },
 };
+
+async function getPage(id) {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(pages[id]);
+    }, 1000)
+  );
+}
 
 const Page = ({ page }) => {
   const router = useRouter();
@@ -33,9 +44,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const page = pages[context.params.id];
-
-  console.log(page);
+  const page = await getPage(context.params.id);
 
   if (!page) {
     return {
