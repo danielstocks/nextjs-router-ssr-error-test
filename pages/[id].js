@@ -20,18 +20,18 @@ const unpublishedPages = {
 };
 
 async function getPage(id, preview = false) {
-  return new Promise((resolve) =>
+  return new Promise((resolve) => {
     setTimeout(() => {
       if (preview) {
         resolve({ ...pages, ...unpublishedPages }[id]);
       } else {
         resolve(pages[id]);
       }
-    }, 1000)
-  );
+    }, 1000);
+  });
 }
 
-const Page = ({ page }) => {
+const Page = ({ page, preview }) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -40,6 +40,11 @@ const Page = ({ page }) => {
 
   return (
     <div>
+      {preview && (
+        <h3>
+          Warning: you are in preview mode. <a href="/api/exit-preview">Exit</a>
+        </h3>
+      )}
       <Link href="/">Home</Link>
       <h1>{page.title}</h1>
     </div>
@@ -54,7 +59,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const page = await getPage(context.params.id, context.preview);
+  const { params, preview = false } = context;
+  const page = await getPage(params.id, preview);
 
   if (!page) {
     return {
@@ -64,7 +70,7 @@ export async function getStaticProps(context) {
   }
 
   return {
-    props: { page },
+    props: { page, preview },
     revalidate: 5,
   };
 }
