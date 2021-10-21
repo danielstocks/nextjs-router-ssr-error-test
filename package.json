@@ -1,5 +1,5 @@
 {
-  "name": "fallback-ssr-error-test",
+  "name": "nextjs-router-ssr-error-test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
