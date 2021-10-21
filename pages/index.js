@@ -9,7 +9,7 @@ export default function Home() {
           <Link href="1">Page 1</Link>
         </li>
         <li>
-          <Link href="2">Page 1</Link>
+          <Link href="2">Page 2</Link>
         </li>
         <li>
           <Link href="3">Page 3</Link>
