@@ -13,10 +13,20 @@ const pages = {
   },
 };
 
-async function getPage(id) {
+const unpublishedPages = {
+  4: {
+    title: "this is page 4 (only available in preview)",
+  },
+};
+
+async function getPage(id, preview = false) {
   return new Promise((resolve) =>
     setTimeout(() => {
-      resolve(pages[id]);
+      if (preview) {
+        resolve({ ...pages, ...unpublishedPages }[id]);
+      } else {
+        resolve(pages[id]);
+      }
     }, 1000)
   );
 }
@@ -44,7 +54,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const page = await getPage(context.params.id);
+  const page = await getPage(context.params.id, context.preview);
 
   if (!page) {
     return {
